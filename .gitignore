@@ -1,0 +1,17 @@
+**/.vscode/
+
+#eclipse project files
+.project
+.pydevproject
+
+# log files in any path
+**/*.log
+
+# Rotated log files
+**/*.log*
+
+.idea
+
+*.DS_Store
+
+addl_index_transformations/portal/cache/*.jsonld
