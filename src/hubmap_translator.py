@@ -81,7 +81,7 @@ class Translator(TranslatorInterface):
         self.entity_api_url = self.indices[self.DEFAULT_INDEX_WITHOUT_PREFIX]['document_source_endpoint'].strip('/')
 
         # Add index_version by parsing the VERSION file
-        self.index_version = ((Path(__file__).absolute().parent.parent.parent / 'VERSION').read_text()).strip()
+        self.index_version = ((Path(__file__).absolute().parent / 'search_api/VERSION').read_text()).strip()
 
         with open(Path(__file__).resolve().parent / 'hubmap_translation' / 'neo4j-to-es-attributes.json',
                   'r') as json_file:

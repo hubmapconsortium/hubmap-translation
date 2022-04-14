@@ -14,4 +14,7 @@
 
 *.DS_Store
 
-addl_index_transformations/portal/cache/*.jsonld
+# Portal cache
+src/hubmap_translation/addl_index_transformations/portal/cache/*.jsonld
+
+src/hubmap_translation/addl_index_transformations/portal/__pycache__/

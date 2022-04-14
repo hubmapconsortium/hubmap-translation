@@ -10,19 +10,19 @@ from tempfile import TemporaryDirectory
 from yaml import safe_load as load_yaml
 import jsonschema
 
-from translator.hubmap_translation.addl_index_transformations.portal.translate import (
+from hubmap_translation.addl_index_transformations.portal.translate import (
     translate, TranslationException
 )
-from translator.hubmap_translation.addl_index_transformations.portal.add_counts import (
+from hubmap_translation.addl_index_transformations.portal.add_counts import (
     add_counts
 )
-from translator.hubmap_translation.addl_index_transformations.portal.add_partonomy import (
+from hubmap_translation.addl_index_transformations.portal.add_partonomy import (
     add_partonomy
 )
-from translator.hubmap_translation.addl_index_transformations.portal.sort_files import (
+from hubmap_translation.addl_index_transformations.portal.sort_files import (
     sort_files
 )
-from translator.hubmap_translation.addl_index_transformations.portal.reset_entity_type import (
+from hubmap_translation.addl_index_transformations.portal.reset_entity_type import (
     reset_entity_type
 )
 
@@ -215,7 +215,7 @@ def _simple_clean(doc):
     # based only on the problems we actually see:
     name_field = 'created_by_user_displayname'
     if doc.get(name_field, '').lower() in [
-            'daniel cotter', 'amir bahmani', 'adam kagel', 'gloria pryhuber']:
+        'daniel cotter', 'amir bahmani', 'adam kagel', 'gloria pryhuber']:
         doc[name_field] = doc[name_field].title()
 
     # Clean up metadata:
