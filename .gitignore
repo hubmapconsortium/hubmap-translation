@@ -4,6 +4,10 @@
 .project
 .pydevproject
 
+# Configuration
+src/instance/app.cfg
+src/instance/search-config.yaml
+
 # log files in any path
 **/*.log
 
