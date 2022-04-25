@@ -1,4 +1,4 @@
 [submodule "src/search_api"]
 	path = src/search_api
-	url = https://github.com/sennetconsortium/search-api.git
-	branch = generalize-search-branch
+	url = https://github.com/hubmapconsortium/search-api.git
+	branch = yuanzhou/generalization-and-docker
