@@ -19,6 +19,8 @@ config['DEFAULT_INDEX_WITHOUT_PREFIX'] = config['INDICES']['default_index']
 config['DEFAULT_ELASTICSEARCH_URL'] = config['INDICES']['indices'][config['DEFAULT_INDEX_WITHOUT_PREFIX']]['elasticsearch']['url'].strip('/')
 config['DEFAULT_ENTITY_API_URL'] = config['INDICES']['indices'][config['DEFAULT_INDEX_WITHOUT_PREFIX']]['document_source_endpoint'].strip('/')
 
+config['GLOBUS_HUBMAP_READ_GROUP_UUID'] = app.config['GLOBUS_HUBMAP_READ_GROUP_UUID']
+config['GLOBUS_HUBMAP_DATA_ADMIN_GROUP_UUID'] = app.config['GLOBUS_HUBMAP_DATA_ADMIN_GROUP_UUID']
 config['SECURE_GROUP'] = app.config['SECURE_GROUP']
 config['GROUP_ID'] = 'group_membership_ids'
 
@@ -29,7 +31,7 @@ sys.path.append("search_api/src")
 
 translator_module = importlib.import_module("hubmap_translator")
 
-from src import app as search_api
+from search_api.src import app as search_api
 
 # For local development/testing
 if __name__ == "__main__":
