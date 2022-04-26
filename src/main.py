@@ -7,7 +7,7 @@ from flask import Flask
 from yaml import safe_load
 
 sys.path.append("search-api/src")
-searchApi = importlib.import_module("app", "search-api/src")
+search_api_module = importlib.import_module("app", "search-api/src")
 
 config = {}
 app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance'),
@@ -32,11 +32,13 @@ config['APP_CLIENT_SECRET'] = app.config['APP_CLIENT_SECRET']
 
 translator_module = importlib.import_module("hubmap_translator")
 
-# For local development/testing
+# This `app` will be imported by wsgi.py when deployed with uWSGI server
+app = search_api_module.SearchAPI(config, translator_module).app
+
+# For local standalone (non-docker) development/testing
 if __name__ == "__main__":
     try:
-        search = searchApi.SearchAPI(config, translator_module)
-        search.app.run(host='0.0.0.0', port="5005")
+        app.run(host='0.0.0.0', port="5005")
     except Exception as e:
         print("Error during starting debug server.")
         print(str(e))
