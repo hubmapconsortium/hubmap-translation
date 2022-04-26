@@ -1,4 +1,4 @@
-[submodule "src/search_api"]
-	path = src/search_api
+[submodule "src/search-api"]
+	path = src/search-api
 	url = https://github.com/hubmapconsortium/search-api.git
 	branch = yuanzhou/generalization-and-docker
