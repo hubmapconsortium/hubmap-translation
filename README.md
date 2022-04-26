@@ -9,3 +9,18 @@ for the URL and specific branch of the Search-API that is to be used. Once you a
 git submodule update --init --remote
 ```
 
+## Docker build for development
+
+```
+cd docker
+/docker-development.sh [check|config|build|start|stop|down]
+```
+
+## Docker build for deployment
+
+```
+cd docker
+/docker-deployment.sh [start|stop|down]
+```
+
+

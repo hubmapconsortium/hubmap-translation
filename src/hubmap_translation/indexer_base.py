@@ -464,13 +464,13 @@ class Indexer:
 
 
     def get_organ_description(self, organ_code):
-        definition_yaml_file = Path(__file__).absolute().parent.parent / 'search-schema/data/definitions/enums/organ_types.yaml'
+        definition_yaml_file = Path(__file__).absolute().parent / 'search-schema/data/definitions/enums/organ_types.yaml'
         
         return self.load_definition_code_description(organ_code, definition_yaml_file)
 
 
     def get_tissue_sample_description(self, tissue_sample_code):
-        definition_yaml_file = Path(__file__).absolute().parent.parent / 'search-schema/data/definitions/enums/tissue_sample_types.yaml'
+        definition_yaml_file = Path(__file__).absolute().parent / 'search-schema/data/definitions/enums/tissue_sample_types.yaml'
 
         return self.load_definition_code_description(tissue_sample_code, definition_yaml_file)
 
