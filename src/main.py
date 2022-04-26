@@ -6,6 +6,9 @@ from pathlib import Path
 from flask import Flask
 from yaml import safe_load
 
+sys.path.append("search-api/src")
+searchApi = importlib.import_module("app", "search-api/src")
+
 config = {}
 app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance'),
             instance_relative_config=True)
@@ -27,16 +30,12 @@ config['GROUP_ID'] = 'group_membership_ids'
 config['APP_CLIENT_ID'] = app.config['APP_CLIENT_ID']
 config['APP_CLIENT_SECRET'] = app.config['APP_CLIENT_SECRET']
 
-sys.path.append("search_api/src")
-
 translator_module = importlib.import_module("hubmap_translator")
-
-from search_api.src import app as search_api
 
 # For local development/testing
 if __name__ == "__main__":
     try:
-        search = search_api.SearchAPI(config, translator_module)
+        search = searchApi.SearchAPI(config, translator_module)
         search.app.run(host='0.0.0.0', port="5005")
     except Exception as e:
         print("Error during starting debug server.")
