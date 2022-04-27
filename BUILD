@@ -1,1 +1,1 @@
-yuanzhou/docker:2eb829a
+yuanzhou/docker:044f10e

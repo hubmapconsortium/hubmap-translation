@@ -20,6 +20,11 @@ src/instance/search-config.yaml
 
 __pycache__/
 
+# Docker copied files and directories
+docker/search-api/src
+docker/BUILD
+docker/VERSION
+
 # Portal cache
 src/hubmap_translation/addl_index_transformations/portal/cache/*.jsonld
 
