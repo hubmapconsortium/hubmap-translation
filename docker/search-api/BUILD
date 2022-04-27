@@ -1,1 +1,0 @@
-yuanzhou/docker:044f10e
