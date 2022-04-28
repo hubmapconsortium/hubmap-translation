@@ -14,6 +14,7 @@ from hubmap_commons import globus_groups
 from hubmap_commons.hm_auth import AuthHelper
 from yaml import safe_load
 
+sys.path.append("search-api/src")
 from indexer import Indexer
 from opensearch_helper_functions import *
 from translator.tranlation_helper_functions import *
@@ -803,11 +804,11 @@ class Translator(TranslatorInterface):
 # It'll delete all the existing indices and recreate then then index everything
 if __name__ == "__main__":
     # Specify the absolute path of the instance folder and use the config file relative to the instance path
-    app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.path.dirname(__file__)), '../instance'),
+    app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.path.dirname(__file__)), '../src/instance'),
                 instance_relative_config=True)
     app.config.from_pyfile('app.cfg')
 
-    INDICES = safe_load((Path(__file__).absolute().parent.parent / 'instance/search-config.yaml').read_text())
+    INDICES = safe_load((Path(__file__).absolute().parent / 'instance/search-config.yaml').read_text())
 
     try:
         token = sys.argv[1]
