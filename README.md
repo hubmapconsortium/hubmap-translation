@@ -13,14 +13,14 @@ git submodule update --init --remote
 
 ```
 cd docker
-/docker-development.sh [check|config|build|start|stop|down]
+./docker-development.sh [check|config|build|start|stop|down]
 ```
 
 ## Docker build for deployment
 
 ```
 cd docker
-/docker-deployment.sh [start|stop|down]
+./docker-deployment.sh [start|stop|down]
 ```
 
 
