@@ -33,7 +33,7 @@ RUN yum install -y nginx && \
     rm /etc/nginx/conf.d/default.conf && \
     mv nginx/nginx.conf /etc/nginx/nginx.conf && \
     rm -rf nginx && \
-    pip install -r src/search-api/src/requirements.txt && \
+    pip install -r src/search-adaptor/src/requirements.txt && \
     chmod +x start.sh && \
     yum clean all 
 

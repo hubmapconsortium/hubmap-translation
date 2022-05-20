@@ -6,8 +6,8 @@ from pathlib import Path
 from flask import Flask
 from yaml import safe_load
 
-sys.path.append("search-api/src")
-search_api_module = importlib.import_module("app", "search-api/src")
+sys.path.append("search-adaptor/src")
+search_adaptor_module = importlib.import_module("app", "search-adaptor/src")
 
 config = {}
 app = Flask(__name__, instance_path=os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance'),
@@ -33,7 +33,7 @@ config['APP_CLIENT_SECRET'] = app.config['APP_CLIENT_SECRET']
 translator_module = importlib.import_module("hubmap_translator")
 
 # This `app` will be imported by wsgi.py when deployed with uWSGI server
-app = search_api_module.SearchAPI(config, translator_module).app
+app = search_adaptor_module.SearchAPI(config, translator_module).app
 
 # For local standalone (non-docker) development/testing
 if __name__ == "__main__":

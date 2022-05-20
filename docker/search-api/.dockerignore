@@ -11,4 +11,4 @@ nginx/conf.d
 src/instance
 
 # Ignore search-schema from the submodule
-src/search-api/src/search-schema
+src/search-adaptor/src/search-schema
