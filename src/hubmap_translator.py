@@ -748,20 +748,13 @@ class Translator(TranslatorInterface):
 
         if response.status_code != 200:
             msg = "HuBMAP translator get_collection() failed to get public collection of uuid: " + entity_id + " via entity-api"
-
-            # Log the full stack trace, prepend a line with our message
             logger.exception(msg)
-
-            logger.debug("======get_public_collection() status code from hubmap_translator======")
-            logger.debug(response.status_code)
-
-            logger.debug("======get_public_collection() response text from hubmap_translator-api======")
-            logger.debug(response.text)
 
             # Bubble up the error message from entity-api instead of sys.exit(msg)
             # The caller will need to handle this exception
-            response.raise_for_status()
             raise requests.exceptions.RequestException(response.text)
+
+        collection_dict = response.json()
 
         return collection_dict
 
