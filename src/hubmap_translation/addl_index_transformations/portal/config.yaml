@@ -7,6 +7,57 @@ mappings:
   date_detection: False
   dynamic_templates:
     -
+      map_every_numeric:
+        match_pattern: regex
+        path_match: "(^ancestor_counts.entity_type.Dataset$)|
+              (^ancestor_counts.entity_type.Donor$)|
+              (^ancestor_counts.entity_type.Sample$)|
+              (^ancestors.create_timestamp$)|
+              (^ancestors.last_modified_timestamp$)|
+              (^ancestors.mapped_metadata.age$)|
+              (^ancestors.mapped_metadata.bmi$)|
+              (^create_timestamp$)|
+              (^descendant_counts.entity_type.Dataset$)|
+              (^descendant_counts.entity_type.Sample$)|
+              (^descendants.create_timestamp$)|
+              (^descendants.last_modified_timestamp$)|
+              (^descendants.metadata.files.size$)|
+              (^donor.create_timestamp$)|
+              (^donor.last_modified_timestamp$)|
+              (^donor.mapped_metadata.age$)|
+              (^donor.mapped_metadata.bmi$)|
+              (^files.size$)|
+              (^immediate_ancestors.create_timestamp$)|
+              (^immediate_ancestors.last_modified_timestamp$)|
+              (^immediate_descendants.create_timestamp$)|
+              (^immediate_descendants.last_modified_timestamp$)|
+              (^immediate_descendants.metadata.files.size$)|
+              (^last_modified_timestamp$)|
+              (^mapped_metadata.age$)|
+              (^mapped_metadata.bmi$)|
+              (^mapper_metadata.size$)|
+              (^origin_sample.ancestors.create_timestamp$)|
+              (^origin_sample.ancestors.last_modified_timestamp$)|
+              (^origin_sample.ancestors.mapped_metadata.age$)|
+              (^origin_sample.ancestors.mapped_metadata.bmi$)|
+              (^origin_sample.create_timestamp$)|
+              (^origin_sample.descendants.create_timestamp$)|
+              (^origin_sample.descendants.last_modified_timestamp$)|
+              (^origin_sample.descendants.metadata.files.size$)|
+              (^origin_sample.donor.create_timestamp$)|
+              (^origin_sample.donor.last_modified_timestamp$)|
+              (^origin_sample.donor.mapped_metadata.age$)|
+              (^origin_sample.donor.mapped_metadata.bmi$)|
+              (^origin_sample.immediate_ancestors.create_timestamp$)|
+              (^origin_sample.immediate_ancestors.last_modified_timestamp$)|
+              (^origin_sample.immediate_descendants.create_timestamp$)|
+              (^origin_sample.immediate_descendants.last_modified_timestamp$)|
+              (^origin_sample.last_modified_timestamp$)|
+              (^source_sample.create_timestamp$)|
+              (^source_sample.last_modified_timestamp$)"
+        mapping:
+          type: "{dynamic_type}"
+    -
       map_every_string:
         match_mapping_type: string
         mapping:
