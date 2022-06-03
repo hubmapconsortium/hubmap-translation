@@ -14,7 +14,7 @@ from hubmap_commons import globus_groups
 from hubmap_commons.hm_auth import AuthHelper
 from yaml import safe_load
 
-sys.path.append("search-api/src")
+sys.path.append("search-adaptor/src")
 from indexer import Indexer
 from opensearch_helper_functions import *
 from translator.tranlation_helper_functions import *
