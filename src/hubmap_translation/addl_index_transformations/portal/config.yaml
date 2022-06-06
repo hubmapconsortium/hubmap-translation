@@ -5,35 +5,71 @@ settings:
 
 mappings:
   date_detection: False
-  numeric_detection: False
   dynamic_templates:
     -
       map_every_float:
         match_pattern: regex
-        path_match: "((.*?)z_rotation$)"
+        path_match: "(^ancestors.rui_location.placement.z_rotation$)|
+            (^descendants.rui_location.placement.z_rotation$)|
+            (^immediate_ancestors.rui_location.placement.z_rotation$)|
+            (^immediate_descendants.rui_location.placement.z_rotation$)|
+            (^origin_sample.descendants.rui_location.placement.z_rotation$)|
+            (^origin_sample.immediate_descendants.rui_location.placement.z_rotation$)|
+            (^rui_location.placement.z_rotation$)|
+            (^source_sample.rui_location.placement.z_rotation$)"
         mapping:
-          type: "float"
+          type: float
     -
-      map_every_long:
+      map_every_numeric:
         match_pattern: regex
-        path_match: "((.*?)Dataset$)|
-              ((.*?)Donor$)|
-              ((.*?)Sample$)|
-              ((.*?)create_timestamp$)|
-              ((.*?)last_modified_timestamp$)|
-              ((.*?)age$)|
-              ((.*?)bmi$)|
-              ((.*?)size$)"
+        path_match: "(^ancestor_counts.entity_type.Dataset$)|
+              (^ancestor_counts.entity_type.Donor$)|
+              (^ancestor_counts.entity_type.Sample$)|
+              (^ancestors.create_timestamp$)|
+              (^ancestors.last_modified_timestamp$)|
+              (^ancestors.mapped_metadata.age$)|
+              (^ancestors.mapped_metadata.bmi$)|
+              (^create_timestamp$)|
+              (^descendant_counts.entity_type.Dataset$)|
+              (^descendant_counts.entity_type.Sample$)|
+              (^descendants.create_timestamp$)|
+              (^descendants.last_modified_timestamp$)|
+              (^descendants.metadata.files.size$)|
+              (^donor.create_timestamp$)|
+              (^donor.last_modified_timestamp$)|
+              (^donor.mapped_metadata.age$)|
+              (^donor.mapped_metadata.bmi$)|
+              (^files.size$)|
+              (^immediate_ancestors.create_timestamp$)|
+              (^immediate_ancestors.last_modified_timestamp$)|
+              (^immediate_descendants.create_timestamp$)|
+              (^immediate_descendants.last_modified_timestamp$)|
+              (^immediate_descendants.metadata.files.size$)|
+              (^last_modified_timestamp$)|
+              (^mapped_metadata.age$)|
+              (^mapped_metadata.bmi$)|
+              (^mapper_metadata.size$)|
+              (^origin_sample.ancestors.create_timestamp$)|
+              (^origin_sample.ancestors.last_modified_timestamp$)|
+              (^origin_sample.ancestors.mapped_metadata.age$)|
+              (^origin_sample.ancestors.mapped_metadata.bmi$)|
+              (^origin_sample.create_timestamp$)|
+              (^origin_sample.descendants.create_timestamp$)|
+              (^origin_sample.descendants.last_modified_timestamp$)|
+              (^origin_sample.descendants.metadata.files.size$)|
+              (^origin_sample.donor.create_timestamp$)|
+              (^origin_sample.donor.last_modified_timestamp$)|
+              (^origin_sample.donor.mapped_metadata.age$)|
+              (^origin_sample.donor.mapped_metadata.bmi$)|
+              (^origin_sample.immediate_ancestors.create_timestamp$)|
+              (^origin_sample.immediate_ancestors.last_modified_timestamp$)|
+              (^origin_sample.immediate_descendants.create_timestamp$)|
+              (^origin_sample.immediate_descendants.last_modified_timestamp$)|
+              (^origin_sample.last_modified_timestamp$)|
+              (^source_sample.create_timestamp$)|
+              (^source_sample.last_modified_timestamp$)"
         mapping:
-          type: "long"
-    - map_every_boolean:
-        match_pattern: regex
-        path_match: "((.*?)contains_human_genetic_sequences$)|
-                  ((.*?)_from_metadatatsv$)|
-                  ((.*?)is_qa_qc$)|
-                  ((.*?)has_metadata$)"
-        mapping:
-          type: "boolean"
+          type: "{dynamic_type}"
     -
       map_every_string:
         match_mapping_type: string
