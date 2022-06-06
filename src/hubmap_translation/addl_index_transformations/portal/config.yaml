@@ -9,9 +9,10 @@ mappings:
   dynamic_templates:
     -
       map_every_float:
-        path_match: "*.z_rotation"
+        match_pattern: regex
+        path_match: "((.*?)z_rotation$)"
         mapping:
-          type: "double"
+          type: "float"
     -
       map_every_long:
         match_pattern: regex
