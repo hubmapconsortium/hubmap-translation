@@ -11,7 +11,7 @@ mappings:
       map_every_float:
         path_match: "*.z_rotation"
         mapping:
-          type: "float"
+          type: "double"
     -
       map_every_long:
         match_pattern: regex
