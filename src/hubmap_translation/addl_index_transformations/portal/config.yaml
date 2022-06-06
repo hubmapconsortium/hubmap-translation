@@ -7,19 +7,6 @@ mappings:
   date_detection: False
   dynamic_templates:
     -
-      map_every_float:
-        match_pattern: regex
-        path_match: "(^ancestors.rui_location.placement.z_rotation$)|
-            (^descendants.rui_location.placement.z_rotation$)|
-            (^immediate_ancestors.rui_location.placement.z_rotation$)|
-            (^immediate_descendants.rui_location.placement.z_rotation$)|
-            (^origin_sample.descendants.rui_location.placement.z_rotation$)|
-            (^origin_sample.immediate_descendants.rui_location.placement.z_rotation$)|
-            (^rui_location.placement.z_rotation$)|
-            (^source_sample.rui_location.placement.z_rotation$)"
-        mapping:
-          type: float
-    -
       map_every_numeric:
         match_pattern: regex
         path_match: "(^ancestor_counts.entity_type.Dataset$)|

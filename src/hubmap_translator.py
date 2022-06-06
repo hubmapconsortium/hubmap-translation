@@ -474,20 +474,53 @@ class Translator(TranslatorInterface):
         entity['datasets'] = datasets
 
     def entity_keys_rename(self, entity):
+        # logger.debug("==================entity before renaming keys==================")
+        # logger.debug(entity)
+
         to_delete_keys = []
         temp = {}
 
         for key in entity:
             to_delete_keys.append(key)
             if key in self.attr_map['ENTITY']:
-                temp_val = entity[key]
+                # Special case of Sample.rui_location
+                # To be backward compatible for API clients relying on the old version
+                # Also gives the ES consumer flexibility to change the inner structure
+                # Note: when `rui_location` is stored as json object (Python dict) in ES
+                # with the default dynamic mapping, it can cause errors due to
+                # the changing data types of some internal fields
+                # isinstance() check is to avoid json.dumps() on json string again
+                if (key == 'rui_location') and isinstance(entity[key], dict):
+                    # Convert Python dict to json string
+                    temp_val = json.dumps(entity[key])
+                else:
+                    temp_val = entity[key]
+
                 temp[self.attr_map['ENTITY'][key]['es_name']] = temp_val
 
+        properties_list = [
+            'metadata',
+            'donor',
+            'origin_sample',
+            'source_sample',
+            'ancestor_ids',
+            'descendant_ids',
+            'ancestors',
+            'descendants',
+            'files',
+            'immediate_ancestors',
+            'immediate_descendants',
+            'datasets'
+        ]
+
         for key in to_delete_keys:
-            if key not in entity_properties_list:
+            if key not in properties_list:
                 entity.pop(key)
 
         entity.update(temp)
+
+        # logger.debug("==================entity after renaming keys==================")
+        # logger.debug(entity)
 
     # These calculated fields are not stored in neo4j but will be generated
     # and added to the ES
